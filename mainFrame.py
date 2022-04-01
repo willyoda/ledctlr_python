@@ -1,5 +1,5 @@
 import wx
-from labelbook_tst import MyLabelBook
+# from labelbook_tst import MyLabelBook
 import wx.lib.agw.labelbook as LB
 import wx.lib.agw.aui as aui
 
@@ -100,17 +100,17 @@ class MainFrame(wx.Frame):
                         aui.AuiPaneInfo().
                         CenterPane().Layer(2).BestSize((240, -1)).
                         MinSize((240, -1)).
-                        Floatable(0).FloatingSize((240, 700)).
+                        Floatable(0).
                         Caption("wxPython Demos").
                         CloseButton(False).
                         Name("DemoTree"))
                         
         self.mgr.AddPane(self.log,
-                        aui.AuiPaneInfo().
+                        aui.AuiPaneInfo().Floatable(0).CloseButton(False).
                         # Left().Layer(2).BestSize((240, -1)).
-                        Bottom().Caption("wxPython Demos"))
+                        Bottom().Caption("日志"))
 
-        text3 = wx.TextCtrl(pnlTop, -1, "Main content window",
+        self.sysInfo = wx.TextCtrl(pnlTop, -1, "Main content window",
                             wx.DefaultPosition, wx.Size(200,150),
                             wx.NO_BORDER | wx.TE_MULTILINE)
 
@@ -118,17 +118,28 @@ class MainFrame(wx.Frame):
         #                     wx.DefaultPosition, wx.Size(200,150),
         #                     wx.NO_BORDER | wx.TE_MULTILINE)
 
-        text4 = wx.Panel(pnlTop, -1, 
-                            wx.DefaultPosition, wx.Size(200,150),
-                            )
-        wx.Dialog(text4,title='hello ')                
+         
         # text4.SetBackgroundColour('red')
 
 
 
 
-        self.mgr.AddPane(text3, aui.AuiPaneInfo().Right())
-        self.mgr.AddPane(text4, aui.AuiPaneInfo().Bottom())
+        self.mgr.AddPane(self.sysInfo,
+                aui.AuiPaneInfo().Floatable(0).CloseButton(False).
+                # Left().Layer(2).BestSize((240, -1)).
+                Right().Caption("运行概况"))
+
+        p4 = wx.Panel(pnlTop)
+        vszrP4 = wx.BoxSizer(wx.VERTICAL)         
+        btn =wx.Button(p4,-1,'Button')
+        vszrP4.Add(btn,proportion=0,flag= wx.ALIGN_CENTER,border =5)
+        p4.SetSizer(vszrP4)
+
+
+        self.mgr.AddPane(p4,
+                aui.AuiPaneInfo().Floatable(0).CloseButton(False).
+                BestSize((-1, 120)).
+                Bottom().Caption("控制台"))
 
 
         # pnlTop.SetSizer(vTopSzr)
