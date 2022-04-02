@@ -1,0 +1,56 @@
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 81, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 64, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 36, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 81, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 64, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 36, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 81, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 64, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 36, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 83, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 64, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 36, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 83, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 64, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 36, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 84, in <module>
+    Frame()
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 65, in __init__
+    tablog = TabLog(notebook)
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 37, in __init__
+    sizer.Add(self.tc, 1, wx.EXPAND)
+AttributeError: 'TabLog' object has no attribute 'tc'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 84, in <module>
+    ex=Frame(title = "Log Test")
+TypeError: __init__() got an unexpected keyword argument 'title'
+Traceback (most recent call last):
+  File "e:\Python\ledctrlGit\wxlogtest.py", line 84, in <module>
+    ex=Frame(title = "Log Test")
+TypeError: __init__() got an unexpected keyword argument 'title'

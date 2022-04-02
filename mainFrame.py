@@ -13,6 +13,7 @@ class MyLog(wx.Log):
         self.tc = tc
         self.logTime= logTime
 
+        print(self.logTime)
     def DoLogText(self,message):
         if self.tc >0:
             self.tc.AppendText(message +'\n')
@@ -62,6 +63,8 @@ class MainFrame(wx.Frame):
         self.SetPosition((30,30))
         # self.SetSize((1344,756))
         self.SetSize((1024,576))
+
+     
 
     def InitUI(self):
 
@@ -135,6 +138,7 @@ class MainFrame(wx.Frame):
         vszrP4.Add(btn,proportion=0,flag= wx.ALIGN_CENTER,border =5)
         p4.SetSizer(vszrP4)
 
+        btn.Bind(wx.EVT_BUTTON,self.OnButton)
 
         self.mgr.AddPane(p4,
                 aui.AuiPaneInfo().Floatable(0).CloseButton(False).
@@ -153,9 +157,13 @@ class MainFrame(wx.Frame):
         self.SetMenuBar(menubar)
 
 
+        self.log.write("Running demo module...")
 
 
-
+    def OnButton(self,e):
+        ...
+        self.log.write("button\n ")
+        # self.write("button\n ")
 
 
 
