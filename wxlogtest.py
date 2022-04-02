@@ -6,10 +6,11 @@ class LogFormatterWithThread(wx.LogFormatter):
 		super().__init__()
 
 	# def Format(level=0, msg='', info=0):
-	# # return "[%d] %s(%d) : %s" % \
-	# #        (info.threadId, info.filename, info.line, msg)
-	# # return "[%d] %s(%d) : %s" %(info.threadId, info.filename, info.line, msg)
-		# return "myLog: %s" %(msg)
+	# 	return "[%d] %s(%d) : %s" % \
+	#        (info.threadId, info.filename, info.line, msg)
+
+	def Format(self,level, msg, info):
+		return "myLog: %s" %(msg)
 
 class MyLog(wx.Log):
 	def __init__(self,tc,logTime=0):
