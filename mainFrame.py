@@ -6,6 +6,9 @@ import wx.lib.agw.aui as aui
 _pageTexts = ["控制策略", "远程本地", "场景控制", "参数设置", "实时告警"]
 _pageIcons = ["roll.png", "charge.png", "add.png", "decrypted.png", "news.png"]
 
+
+
+
 # Show how to derive a custom wxLog class
 class MyLog(wx.Log):
     def __init__(self,tc,logTime=0) -> None:

@@ -1,7 +1,16 @@
 import wx
-# wxpath = "wxPython_Phoenix-3.0.0.0-r75078-win64-py3.3"
-# wx = importlib.find_loader("wx", [wxpath]).load_module()
- 
+
+
+class LogFormatterWithThread(wx.LogFormatter):
+	def __init__(self):
+		super().__init__()
+
+	# def Format(level=0, msg='', info=0):
+	# # return "[%d] %s(%d) : %s" % \
+	# #        (info.threadId, info.filename, info.line, msg)
+	# # return "[%d] %s(%d) : %s" %(info.threadId, info.filename, info.line, msg)
+		# return "myLog: %s" %(msg)
+
 class MyLog(wx.Log):
 	def __init__(self,tc,logTime=0):
 		super().__init__()
@@ -10,7 +19,6 @@ class MyLog(wx.Log):
 
 
 	def DoLogText(self,message):
-		print(self.logTime)
 		if self.tc is not None:
 			self.tc.AppendText(message +'\n') 	
 
@@ -49,18 +57,6 @@ class TabPage(wx.Panel):
 			self.SetBackgroundColour('#7B68EE')	
 	sizer = wx.BoxSizer(wx.VERTICAL)
 
-		# sizer.Add(self.tc, 1, wx.EXPAND)
-		# self.SetSizer(sizer)
-
-
-
-
-		# wx.LogError("Error")
-		# wx.LogWarning("Warning")
-		# wx.LogMessage("Message")
-		# wx.LogVerbose("Verbose")
-		# wx.LogStatus("Status")
-		# wx.LogSysError("SysError")
 
 
 
@@ -100,6 +96,7 @@ class Frame(wx.Frame):
 		self.log = MyLog(self.tc)
 		wx.Log.SetActiveTarget(self.log)
 		wx.Log.SetVerbose(True)
+		self.log.SetFormatter(LogFormatterWithThread())
 
 		vSzr.Add(self.tc,1,wx.EXPAND|wx.ALL ,5)
 		panel.SetSizer(vSzr)
@@ -110,12 +107,13 @@ class Frame(wx.Frame):
 		sl=e.GetSelection()+1
 		msg = 'page change %d'%sl
 		print(msg)
+		# wx.LogMessage(msg)
 		wx.LogMessage(msg)
-		wx.LogVerbose(msg)
-		# wx.LogStatus(self,msg)
-		wx.LogError(msg) #正常显示
-		wx.LogWarning(msg) #正常显示
-		# self.log.Flush()	
+		# wx.LogVerbose(msg)
+		# # wx.LogStatus(self,msg)
+		# wx.LogError(msg) #正常显示
+		# wx.LogWarning(msg) #正常显示
+
 
 	
  

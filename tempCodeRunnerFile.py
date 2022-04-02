@@ -1,1 +1,1 @@
-LogStatus
+LogFormatter
