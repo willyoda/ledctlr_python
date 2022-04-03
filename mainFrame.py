@@ -8,15 +8,14 @@ _pageTexts = ["控制策略", "远程本地", "场景控制", "参数设置", "�
 _pageIcons = ["roll.png", "charge.png", "add.png", "decrypted.png", "news.png"]
 
 class LogFormatterWithThread(wx.LogFormatter):
-	def __init__(self):
-		super().__init__()
+    def __init__(self):
+        super().__init__()
 
-		today =DT.date.today()
-		self.logtime= DT.datetime(today.year,today.month,today.day)
-
-	def Format(self,level, msg, info):
-		
-		return ('%s: %s' %(self.logtime.now(),msg))
+    def Format(self,level, msg, info):
+        now =DT.datetime.now()
+        lt = '%02d:%02d:%02d.%06d'%(now.hour,now.minute,now.second,now.microsecond)
+        return ('%s : %s' %(lt,msg))    #不带日期显示
+        # return ('%s : %s' %(now,msg)) #带日期显示
 
 
 # Show how to derive a custom wxLog class

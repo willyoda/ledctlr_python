@@ -24,6 +24,9 @@ dt= DT.datetime(now.year,now.month,now.day)
 print('timestamp =%d'%dt.timestamp())
 print('utc time %s'%(dt.utcnow()))
 
+lt = '@%d:%d:%d.%d@'%(now.hour,now.minute,now.second,now.microsecond)
+print(lt )
+
 # dt.fromisoformat(DT.date.isoformat(''))
 print('*** ',dt.today())   #显示格式为 ：2022-04-03 14:39:44.691249
 # print(dt.now())     #显示格式为 ：2022-04-03 14:39:44.691249
