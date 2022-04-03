@@ -1,1 +1,1 @@
-LogFormatter
+LogFormatterWithThread()

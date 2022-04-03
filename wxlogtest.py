@@ -1,16 +1,18 @@
 import wx
-
+import datetime as DT
 
 class LogFormatterWithThread(wx.LogFormatter):
 	def __init__(self):
 		super().__init__()
 
-	# def Format(level=0, msg='', info=0):
-	# 	return "[%d] %s(%d) : %s" % \
-	#        (info.threadId, info.filename, info.line, msg)
+		today =DT.date.today()
+		self.logtime= DT.datetime(today.year,today.month,today.day)
 
 	def Format(self,level, msg, info):
-		return "myLog: %s" %(msg)
+		
+		return ('%s: %s' %(self.logtime.now(),msg))
+
+
 
 class MyLog(wx.Log):
 	def __init__(self,tc,logTime=0):

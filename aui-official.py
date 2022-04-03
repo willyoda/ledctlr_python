@@ -1,6 +1,7 @@
 import wx
 import wx.lib.agw.aui as aui
 
+
 class MyLog(wx.Log):
     def __init__(self, textCtrl, logTime=0):
         wx.Log.__init__(self)
@@ -32,7 +33,7 @@ class MyFrame(wx.Frame):
                             wx.DefaultPosition, wx.Size(200,150),
                             wx.NO_BORDER | wx.TE_MULTILINE)
         self.log = MyLog(self.tc)
-        wx.Log.SetActiveTarget(self.log)                            
+        wx.Log.SetActiveTarget(self.log)   
 
         text3 = wx.TextCtrl(self, -1, "Main content window",
                             wx.DefaultPosition, wx.Size(200,150),

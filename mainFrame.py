@@ -1,3 +1,4 @@
+import datetime as DT
 import wx
 # from labelbook_tst import MyLabelBook
 import wx.lib.agw.labelbook as LB
@@ -6,19 +7,26 @@ import wx.lib.agw.aui as aui
 _pageTexts = ["控制策略", "远程本地", "场景控制", "参数设置", "实时告警"]
 _pageIcons = ["roll.png", "charge.png", "add.png", "decrypted.png", "news.png"]
 
+class LogFormatterWithThread(wx.LogFormatter):
+	def __init__(self):
+		super().__init__()
 
+		today =DT.date.today()
+		self.logtime= DT.datetime(today.year,today.month,today.day)
+
+	def Format(self,level, msg, info):
+		
+		return ('%s: %s' %(self.logtime.now(),msg))
 
 
 # Show how to derive a custom wxLog class
 class MyLog(wx.Log):
-    def __init__(self,tc,logTime=0) -> None:
+    def __init__(self,tc) -> None:
         super().__init__()
         self.tc = tc
-        self.logTime= logTime
 
-        print(self.logTime)
     def DoLogText(self,message):
-        if self.tc >0:
+        if self.tc is not None:
             self.tc.AppendText(message +'\n')
 
 class SamplePane(wx.Panel):
@@ -95,9 +103,11 @@ class MainFrame(wx.Frame):
         
 
         #add Log window
-        self.log = wx.TextCtrl(pnlTop,id=wx.ID_ANY,value='Log',name='Log', 
+        self.logtc = wx.TextCtrl(pnlTop,id=wx.ID_ANY,name='Log', 
                     style=wx.TE_MULTILINE|wx.TE_READONLY|wx.HSCROLL)
-        wx.Log.SetActiveTarget(MyLog(self.log))
+        self.log = MyLog(self.logtc)
+        wx.Log.SetActiveTarget(self.log)
+        self.log.SetFormatter(LogFormatterWithThread())
 
         
         # vTopSzr.Add(self.log,proportion =1,flag = wx.EXPAND|wx.ALL ,border=5)
@@ -111,7 +121,7 @@ class MainFrame(wx.Frame):
                         CloseButton(False).
                         Name("DemoTree"))
                         
-        self.mgr.AddPane(self.log,
+        self.mgr.AddPane(self.logtc,
                         aui.AuiPaneInfo().Floatable(0).CloseButton(False).
                         # Left().Layer(2).BestSize((240, -1)).
                         Bottom().Caption("日志"))
@@ -160,13 +170,12 @@ class MainFrame(wx.Frame):
         self.SetMenuBar(menubar)
 
 
-        self.log.write("Running demo module...")
 
 
     def OnButton(self,e):
         ...
-        self.log.write("button\n ")
-        # self.write("button\n ")
+        msg = 'button press down'
+        wx.LogMessage(msg)
 
 
 
